@@ -1,0 +1,15 @@
+<div class="content-container">
+    
+    <h1>TESTE CIDADES</h1>
+
+    <div>
+        <label for="valor">Cidade:</label>
+        <input type="text" id="city" [(ngModel)]="city">
+    </div>
+        
+    <button (click)="getWeather()">Get Weather!</button>
+
+    <div class="resultado" *ngIf="weather !== null ">        
+        Weather: {{ weather }}.
+    </div>
+</div>
