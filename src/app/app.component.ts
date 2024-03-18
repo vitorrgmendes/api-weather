@@ -10,5 +10,5 @@ import { CitySelectorComponent } from './city-selector/city-selector.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'api-weather';
+  title = 'Get Weather Live';
 }

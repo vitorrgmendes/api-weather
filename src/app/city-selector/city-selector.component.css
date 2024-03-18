@@ -1,0 +1,48 @@
+/* city-selector.component.css */
+
+/* Container for the entire content */
+.content-container {
+    max-width: 400px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Input field and button styles */
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 12px;
+    cursor: pointer;
+    width: 30%;
+  }
+  
+  /* Result and details styles */
+  .result,
+  .details {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  
+  /* Additional styling for the "More Details" button */
+  button.more-details {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #28a745;
+  }

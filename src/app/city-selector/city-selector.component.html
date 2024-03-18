@@ -1,15 +1,29 @@
 <div class="content-container">
-    
-    <h1>TESTE CIDADES</h1>
+
+    <h1>{{ title }}</h1>
 
     <div>
-        <label for="valor">Cidade:</label>
+        <label for="valor">City:</label>
         <input type="text" id="city" [(ngModel)]="city">
     </div>
         
     <button (click)="getWeather()">Get Weather!</button>
 
-    <div class="resultado" *ngIf="weather !== null ">        
-        Weather: {{ weather }}.
+    <div class="result" *ngIf="weather !== null ">        
+        {{ main }}<br>
+        {{ weather }}<br>
+        {{temperature}}<br>
+    </div>
+
+    <div>
+        <button class="more-details" (click)="moreDetails()">More Details</button>
+    </div>    
+
+    <div class="details" *ngIf="showDetails && weather !== null">      
+        {{ minTemperature }}<br>
+        {{ maxTemperature }}<br>
+        {{pressureHPA}}<br>
+        {{humidityPercent}}<br>
+        {{windSpeedMetersPerSecond}}
     </div>
 </div>

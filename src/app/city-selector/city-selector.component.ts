@@ -10,33 +10,76 @@ import { CityService } from '../city-service.service';
   templateUrl: './city-selector.component.html',
   styleUrl: './city-selector.component.css'
 })
-export class CitySelectorComponent {
-  private cityService: CityService;
-
+export class CitySelectorComponent 
+{
+  title = 'Live Weather';
   city: string = '';
+  main: string | null = null;
   weather: string | null = null;
+  temperature: string | null = null;
 
-  constructor(private cityServiceInstance: CityService) {
-    this.cityService = cityServiceInstance;
+  minTemperature: string | null = null;
+  maxTemperature: string | null = null;
+  pressureHPA: string | null = null;
+  humidityPercent: string | null = null;
+  windSpeedMetersPerSecond: string | null = null;
+
+  constructor(private cityService: CityService) {
   }
 
   getWeather(): void {
     this.cityService.getCityWeather(this.city).subscribe(
-      (response: any) => {
-        // Handle the response here
-        console.log('Response:', response);
-
-        // Extract weather information
+      (response: any) => 
+      {
         if (response.weather && response.weather.length > 0) {
-          this.weather = response.weather[0].description;
-          console.log('Weather Description:', this.weather);
+          this.showDetails = false;
+          
+          // Main Infos
+          this.main = `Weather: ${response.weather[0].main}.`;
+          this.weather = `Detailed Weather: ${response.weather[0].description}.`;
+          this.temperature = `Current Temperature: ${(response.main.temp - 273.15).toFixed(1)} °C`;   
+
+          // More Details
+          this.minTemperature = `Min. Temperature: ${(response.main.temp_min - 273.15).toFixed(1)} °C`;
+          this.maxTemperature = `Max. Temperature: ${(response.main.temp_max - 273.15).toFixed(1)} °C`;
+          this.pressureHPA = `Pressure: ${response.main.pressure} hPa`;
+          this.humidityPercent = `Humidity: ${response.main.humidity}%`;
+          this.windSpeedMetersPerSecond = `Wind Speed: ${response.wind.speed} m/s`;
+
         } else {
-          console.warn('No weather data found.');
+          this.clearData()
+          this.weather = 'No weather data found.';
         }
       },
-      (error: any) => {
-        console.error('Error fetching city data:', error);
+      () => {
+        this.clearData()
+        this.weather = 'City not found!';
       }
     );
+  }
+
+  showDetails = false;
+  moreDetails(): void {
+    if (this.weather !== null)
+    {
+      this.showDetails = !this.showDetails;
+    }    
+  }
+
+  clearData(): void 
+  {
+    this.showDetails = false;
+
+    // Clear Main Infos
+    this.main = '';
+    this.weather = null;
+    this.temperature = '';
+
+    // Clear More Details
+    this.minTemperature = '';
+    this.maxTemperature = '';
+    this.pressureHPA = '';
+    this.humidityPercent = '';
+    this.windSpeedMetersPerSecond = '';
   }
 }
