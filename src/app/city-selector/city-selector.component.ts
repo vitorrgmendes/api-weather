@@ -44,7 +44,7 @@ export class CitySelectorComponent
           this.maxTemperature = `Max. Temperature: ${(response.main.temp_max - 273.15).toFixed(1)} °C`;
           this.pressureHPA = `Pressure: ${response.main.pressure} hPa`;
           this.humidityPercent = `Humidity: ${response.main.humidity}%`;
-          this.windSpeedMetersPerSecond = `Wind Speed: ${response.wind.speed} m/s`;
+          this.windSpeedMetersPerSecond = `Wind Speed: ${(response.wind.speed * 3.6).toFixed(1)} Km/h`;
 
         } else {
           this.clearData()
@@ -68,8 +68,6 @@ export class CitySelectorComponent
 
   clearData(): void 
   {
-    this.showDetails = false;
-
     // Clear Main Infos
     this.main = '';
     this.weather = null;
@@ -81,5 +79,7 @@ export class CitySelectorComponent
     this.pressureHPA = '';
     this.humidityPercent = '';
     this.windSpeedMetersPerSecond = '';
+
+    this.showDetails = false;
   }
 }
