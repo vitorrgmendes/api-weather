@@ -1,1 +1,7 @@
-<p>weather-details works!</p>
+<div class="details" *ngIf="showDetails && weather.main !== null">      
+    {{ weather.minTemperature }}<br>
+    {{ weather.maxTemperature }}<br>
+    {{ weather.pressureHPA }}<br>
+    {{ weather.humidityPercent}}<br>
+    {{ weather.windSpeedMetersPerSecond }}
+</div>

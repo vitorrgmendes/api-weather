@@ -1,1 +1,9 @@
-<p>weather-information works!</p>
+<div class="result" *ngIf="weather.weather !== null ">        
+    {{ weather.main }}<br>
+    {{ weather.weather }}<br>
+    {{ weather.temperature }}<br>
+</div>
+
+<div>
+    <button class="more-details" (click)="moreDetails()">More Details</button>
+</div> 
